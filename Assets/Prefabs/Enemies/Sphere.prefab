@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 5368229786584709813}
   - component: {fileID: 3193149562984431486}
   - component: {fileID: -4212440105262018382}
-  - component: {fileID: 2982357480095854147}
+  - component: {fileID: 8397111427311666316}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -822,7 +822,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &2982357480095854147
+--- !u!114 &8397111427311666316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b65c1b813df89f4e986ba630b942fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps_player_obj: {fileID: 5704454009007697773, guid: d3b44a39c67652e4194f7ce5b9ef229b, type: 3}
+  fps_player_obj: {fileID: 0}
   robot_speed: 3
   rotationSpeed: 30
   type: Sphere

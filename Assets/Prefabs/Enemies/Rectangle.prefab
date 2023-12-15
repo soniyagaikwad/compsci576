@@ -188,7 +188,6 @@ GameObject:
   - component: {fileID: 806652266722043117}
   - component: {fileID: 135685294281765661}
   - component: {fileID: -3382177062805704865}
-  - component: {fileID: -2597279472208557100}
   m_Layer: 0
   m_Name: Rectangle
   m_TagString: Untagged
@@ -313,23 +312,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &-2597279472208557100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2446299676868030337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b65c1b813df89f4e986ba630b942fc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fps_player_obj: {fileID: 5704454009007697773, guid: d3b44a39c67652e4194f7ce5b9ef229b, type: 3}
-  robot_speed: 2
-  rotationSpeed: 30
-  type: Rectangle
-  life: 3
 --- !u!1 &3676387198996503864
 GameObject:
   m_ObjectHideFlags: 0
