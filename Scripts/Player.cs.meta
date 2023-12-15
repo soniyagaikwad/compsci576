@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: a2937fd54e6ac124197d046dc1f39a59
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerCamera: {instanceID: 0}
+  - bulletPrefab0: {fileID: 6029224342654075286, guid: bcb11f8d6788a1848835ddc2e465939a, type: 3}
+  - bulletPrefab1: {fileID: 8438341966713958403, guid: da91378abb90c274889a6060c5d2b962, type: 3}
+  - bulletPrefab2: {fileID: 2233834430490164025, guid: 10eba9aae97f4f14da95118f59aba71c, type: 3}
+  - bulletPrefab3: {fileID: 3984596206407030478, guid: 480e47bf125005148a8827b97d881351, type: 3}
+  - bulletPrefab4: {fileID: 6012152033409525173, guid: dcfc672049f40d7499cff243cdb82034, type: 3}
+  - bulletPrefab5: {fileID: 5813846931748775977, guid: 3aa9aa052f34e404887f6cd796346261, type: 3}
+  - bulletPrefab6: {fileID: 3070162627458566878, guid: 372cd6464abc7234395c605378efe054, type: 3}
+  - bulletPrefab7: {fileID: 1391643061656247832, guid: 48eff25a420dab146a570f571b843cdb, type: 3}
+  - bulletPrefab8: {fileID: 6337855173453839638, guid: 2beded205854fe24c9528c3242639a51, type: 3}
+  - bulletPrefab9: {fileID: 7456490733329924006, guid: 5b36621bbe11871499cf0c082f51a356, type: 3}
+  - equippedBullet: {fileID: 8438341966713958403, guid: da91378abb90c274889a6060c5d2b962, type: 3}
+  - currentNumber: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
