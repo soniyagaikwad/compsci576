@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shield
   - MazeWall
+  - Enemies
   layers:
   - Default
   - TransparentFX

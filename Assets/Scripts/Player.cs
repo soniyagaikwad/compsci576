@@ -32,6 +32,14 @@ public class FPSController : MonoBehaviour
 
     public TextMesh currentNumber;
 
+    public AudioSource gunShotAudioSource;
+    public AudioSource gunSwitchAudioSource;
+    public AudioSource walkingAudioSource;
+    public AudioSource jumpingAudioSource;
+    public AudioSource runningAudioSource;
+
+    public Animator animator;
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -41,6 +49,7 @@ public class FPSController : MonoBehaviour
 
     void Start()
     {
+        //animator = GetComponentInParent<Animator>();
         currentNumber.text = "Number 1";
         equippedBullet = bulletPrefab1;
         characterController = GetComponent<CharacterController>();
@@ -65,6 +74,7 @@ public class FPSController : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
+            jumpingAudioSource.Play();
         }
         else
         {
@@ -79,6 +89,7 @@ public class FPSController : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
+
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
 
@@ -92,63 +103,160 @@ public class FPSController : MonoBehaviour
         }
 
 
+        //Movement Sounds
+        PlayWalkingSound();
+        PlayRunningSound();
+
+
+
         //Switching bullets
-        if (Input.GetKeyDown(KeyCode.Alpha0)){
-             currentNumber.text = "Number 0";
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            currentNumber.text = "Number 0";
             equippedBullet = bulletPrefab0;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)){
-             currentNumber.text = "Number 1";
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentNumber.text = "Number 1";
             equippedBullet = bulletPrefab1;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)){
-             currentNumber.text = "Number 2";
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentNumber.text = "Number 2";
             equippedBullet = bulletPrefab2;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)){
-             currentNumber.text = "Number 3";
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentNumber.text = "Number 3";
             equippedBullet = bulletPrefab3;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha4)){
-             currentNumber.text = "Number 4";
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentNumber.text = "Number 4";
             equippedBullet = bulletPrefab4;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha5)){
-             currentNumber.text = "Number 5";
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            currentNumber.text = "Number 5";
             equippedBullet = bulletPrefab5;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha6)){
-             currentNumber.text = "Number 6";
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            currentNumber.text = "Number 6";
             equippedBullet = bulletPrefab6;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha7)){
-             currentNumber.text = "Number 7";
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            currentNumber.text = "Number 7";
             equippedBullet = bulletPrefab7;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha8)){
-             currentNumber.text = "Number 8";
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            currentNumber.text = "Number 8";
             equippedBullet = bulletPrefab8;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha9)){
-             currentNumber.text = "Number 9";
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            currentNumber.text = "Number 9";
             equippedBullet = bulletPrefab9;
+            gunSwitchAudioSource.Play();
+            animator.SetTrigger("SwitchTrigger");
         }
 
         //Shooting
-        if (Input.GetMouseButtonDown(0)) {
-                GameObject bulletObject = Instantiate (equippedBullet);
-                bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
-                bulletObject.transform.forward = playerCamera.transform.forward;
+        if (Input.GetMouseButtonDown(0))
+        {
+            gunShotAudioSource.Play();
+            GameObject bulletObject = Instantiate(equippedBullet);
+            bulletObject.transform.position = playerCamera.transform.position + playerCamera.transform.forward;
+            bulletObject.transform.forward = playerCamera.transform.forward;
+            animator.SetTrigger("ShootTrigger");
         }
 
     }
+
+
+    void PlayWalkingSound()
+    {
+        // Check conditions before playing walking sound
+        if (characterController.isGrounded && characterController.velocity.magnitude > 0)
+        {
+            if (!walkingAudioSource.isPlaying)
+            {
+                walkingAudioSource.Play();
+            }
+        }
+        else
+        {
+            // Stop the walking sound if the player is not moving
+            walkingAudioSource.Stop();
+        }
+    }
+
+
+    // New method to play running sound
+    void PlayRunningSound()
+    {
+        // Check conditions before playing running sound
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        if (isRunning && characterController.isGrounded && characterController.velocity.magnitude > 0)
+        {
+            // Stop the walking sound if the player is running
+            walkingAudioSource.Stop();
+
+            // Play running sound if not already playing
+            if (!runningAudioSource.isPlaying)
+            {
+                runningAudioSource.Play();
+            }
+        }
+        else
+        {
+            // Stop the running sound if the player is not running or moving
+            runningAudioSource.Stop();
+
+            // Start or continue playing the walking sound if the player is walking
+            if (characterController.isGrounded && characterController.velocity.magnitude > 0)
+            {
+                if (!walkingAudioSource.isPlaying)
+                {
+                    walkingAudioSource.Play();
+                }
+            }
+            else
+            {
+                // Stop the walking sound if the player is not moving
+                walkingAudioSource.Stop();
+            }
+        }
+    }
+
+
 }
